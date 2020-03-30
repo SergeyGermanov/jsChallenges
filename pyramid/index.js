@@ -15,36 +15,39 @@
 //       '#####'
 
 function pyramid(n) {
-  for (var row = 0; row < n; row++) {
-    var stair = "";
-    for (var column = 0; column < n; column++) {
-      if (column <= row) {
-        stair += "#";
+  const midpoint = Math.floor((2 * n - 1) / 2);
+  for (let row = 0; row < n; row++) {
+    let level = "";
+
+    for (let column = 0; column < 2 * n - 1; column++) {
+      if (midpoint - row <= column && midpoint + row >= column) {
+        level += "#";
       } else {
-        stair += " ";
+        level += " ";
       }
     }
-    var revStair = stair
-      .slice(1)
-      .split("")
-      .reverse()
-      .join("");
-    console.log(revStair + stair);
+    console.log(level);
   }
 }
 
 module.exports = pyramid;
 
-function steps(n) {
-  for (let row = 0; row < n; row++) {
-    let stair = "";
-    for (let column = 0; column < n; column++) {
-      if (column <= row) {
-        stair += "#";
-      } else {
-        stair += " ";
-      }
-    }
-    console.log(stair);
-  }
-}
+// nested loop and reverse string
+// function pyramid(n) {
+//     for (var row = 0; row < n; row++) {
+//       var stair = "";
+//       for (var column = 0; column < n; column++) {
+//         if (column <= row) {
+//           stair += "#";
+//         } else {
+//           stair += " ";
+//         }
+//       }
+//       var revStair = stair
+//         .slice(1)
+//         .split("")
+//         .reverse()
+//         .join("");
+//       console.log(revStair + stair);
+//     }
+//   }
