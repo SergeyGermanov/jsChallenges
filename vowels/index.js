@@ -8,7 +8,19 @@
 //   vowels('Why?') --> 0
 
 function vowels(str) {
-  return str.replace(/[^aeiou]/gi, "").length;
+  let count = 0;
+  const checker = ["a", "e", "i", "o", "u"];
+  for (let char of str.toLowerCase()) {
+    if (checker.includes(char)) {
+      count++;
+    }
+  }
+  return count;
 }
 
 module.exports = vowels;
+
+// ReGex and .length solution
+// function vowels(str) {
+//     return str.replace(/[^aeiou]/gi, "").length;
+//   }
