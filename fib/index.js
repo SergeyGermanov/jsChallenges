@@ -9,17 +9,31 @@
 //   fib(4) === 3
 
 function fib(n) {
-  var a = 1;
-  var b = 0;
-  var temp = 0;
+  const result = [0, 1];
 
-  while (n > 0) {
-    temp = a;
-    a = a + b;
-    b = temp;
-    n--;
+  for (let i = 2; i <= n; i++) {
+    const a = result[i - 1];
+    const b = result[i - 2];
+
+    result.push(a + b);
   }
-  return b;
+
+  return result[n];
 }
 
 module.exports = fib;
+
+//while loop solution
+// function fib(n) {
+//     var a = 1;
+//     var b = 0;
+//     var temp = 0;
+
+//     while (n > 0) {
+//       temp = a;
+//       a = a + b;
+//       b = temp;
+//       n--;
+//     }
+//     return b;
+//   }
