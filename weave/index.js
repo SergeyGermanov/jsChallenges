@@ -27,12 +27,13 @@ const Queue = require("./queue");
 function weave(sourceOne, sourceTwo) {
   const q = new Queue();
 
-  while (sourceOne.data.length > 0) {
+  while (sourceOne.peek() || sourceTwo.peek()) {
+    if (sourceOne.peek()) {
+      q.add(sourceOne.remove());
+    }
+
     if (sourceTwo.peek()) {
-      q.add(sourceOne.remove());
       q.add(sourceTwo.remove());
-    } else {
-      q.add(sourceOne.remove());
     }
   }
 
@@ -40,3 +41,14 @@ function weave(sourceOne, sourceTwo) {
 }
 
 module.exports = weave;
+// while loop solution
+// while (sourceOne.data.length > 0) {
+//     if (sourceTwo.peek()) {
+//       q.add(sourceOne.remove());
+//       q.add(sourceTwo.remove());
+//     } else {
+//       q.add(sourceOne.remove());
+//     }
+//   }
+
+//   return q;
