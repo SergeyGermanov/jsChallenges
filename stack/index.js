@@ -16,16 +16,35 @@ class Stack {
   }
 
   push(record) {
-    return this.data.unshift(record);
+    return this.data.push(record);
   }
 
   pop() {
-    return this.data.shift();
+    return this.data.pop();
   }
 
   peek() {
-    return this.data[0];
+    return this.data[this.data.length - 1];
   }
 }
 
 module.exports = Stack;
+
+//shift, unshift and data[0]
+// class Stack {
+//     constructor() {
+//       this.data = [];
+//     }
+
+//     push(record) {
+//       return this.data.unshift(record);
+//     }
+
+//     pop() {
+//       return this.data.shift();
+//     }
+
+//     peek() {
+//       return this.data[0];
+//     }
+//   }
