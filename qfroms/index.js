@@ -16,38 +16,78 @@ const Stack = require("./stack");
 
 class Queue {
   constructor() {
-    this.one = new Stack();
-    this.two = new Stack();
+    this.first = new Stack();
+    this.second = new Stack();
   }
 
   add(record) {
-    return this.one.push(record);
+    return this.first.push(record);
   }
 
   remove() {
-    let result;
+    while (this.first.peek()) {
+      this.second.push(this.first.pop());
+    }
 
-    while (this.one.peek()) {
-      this.two.push(this.one.pop());
+    const record = this.second.pop();
+
+    while (this.second.peek()) {
+      this.first.push(this.second.pop());
     }
-    result = this.two.pop();
-    while (this.two.peek()) {
-      this.one.push(this.two.pop());
-    }
-    return result;
+
+    return record;
   }
 
   peek() {
-    let result;
-    while (this.one.peek()) {
-      this.two.push(this.one.pop());
+    while (this.first.peek()) {
+      this.second.push(this.first.pop());
     }
-    result = this.two.peek();
-    while (this.two.peek()) {
-      this.one.push(this.two.pop());
+
+    const record = this.second.peek();
+
+    while (this.second.peek()) {
+      this.first.push(this.second.pop());
     }
-    return result;
+
+    return record;
   }
 }
 
 module.exports = Queue;
+
+// while loops solution
+// class Queue {
+//     constructor() {
+//       this.one = new Stack();
+//       this.two = new Stack();
+//     }
+
+//     add(record) {
+//       return this.one.push(record);
+//     }
+
+//     remove() {
+//       let result;
+
+//       while (this.one.peek()) {
+//         this.two.push(this.one.pop());
+//       }
+//       result = this.two.pop();
+//       while (this.two.peek()) {
+//         this.one.push(this.two.pop());
+//       }
+//       return result;
+//     }
+
+//     peek() {
+//       let result;
+//       while (this.one.peek()) {
+//         this.two.push(this.one.pop());
+//       }
+//       result = this.two.peek();
+//       while (this.two.peek()) {
+//         this.one.push(this.two.pop());
+//       }
+//       return result;
+//     }
+//   }
